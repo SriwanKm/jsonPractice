@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Practice</title>
+</head>
+<body>
+
+<ul id="list"></ul>
+
+
+
+<script>
+    let person = {
+        name: "Kook",
+        age: 27,
+        address: {
+            street: "3457 3rd St N",
+            city: "Saint Cloud"
+            // email: function () {
+            //     return "kcqkoo@gmail.com"
+        },
+        children: ["Seraphim", "Tida"]
+    }
+    // person = JSON.stringify(person)
+    // person = JSON.parse(person);
+
+    // let people = [
+    //     {
+    //         name: "Sam",
+    //         age: 39
+    //     },
+    //     {
+    //         name: "Sriwan",
+    //         age: 27
+    //     },
+    //     {
+    //         name: "Nok",
+    //         age: 58
+    //     }
+    // ]
+
+
+
+
+
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Typical action to be performed when the document is ready:
+            let response = JSON.parse(xhttp.responseText)
+            let people = response.people
+
+            let nameList = ''
+            for (let i = 0; i < people.length; i++) {
+                nameList += '<li>' + people[i].name + '</li>'
+            }
+            document.getElementById("list").innerHTML = nameList
+        }
+    };
+    xhttp.open("GET", "practice.json", true);
+    xhttp.send();
+</script>
+
+
+</body>
+</html>
