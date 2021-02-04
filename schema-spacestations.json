@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://kookai.madeup/spacestation",
+  "title": "spacestation shema",
+  "description": "This schema describes a spacestation",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 20,
+      "minLength": 3
+
+    },
+    "population": {
+      "type": "integer",
+      "exclusiveMaximum": 10000,
+      "exclusiveMinimum": 5,
+      "description": "The population shows number of people on the spacestation"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "plant": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "properties": {
+          "plantName": {
+            "type": "string"
+          },
+          "poisonous": {
+            "type": "boolean"
+          },
+          "leafs": {
+            "type": "integer"
+          }
+        },
+        "required": ["leafs", "poisonous", "plantName"]
+      }
+    }
+  },
+  "required": ["name", "population", "plant", "active"]
+}
